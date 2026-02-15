@@ -1,0 +1,43 @@
+<div class="space-y-6">
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="text-gray-500">
+    Loading analytics...
+  </div>
+
+  <!-- Content -->
+  <div *ngIf="!loading && stats()">
+
+    <h1 class="text-2xl font-bold">Admin Analytics</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <div class="bg-white p-6 rounded shadow">
+        <h3 class="text-gray-500">Total Users</h3>
+        <p class="text-3xl font-bold">{{ stats().totalUsers }}</p>
+      </div>
+
+      <div class="bg-white p-6 rounded shadow">
+        <h3 class="text-gray-500">New Users Today</h3>
+        <p class="text-3xl font-bold text-green-600">
+          {{ stats().newUsersToday }}
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded shadow">
+        <h3 class="text-gray-500">Admin Accounts</h3>
+        <p class="text-3xl font-bold text-blue-600">
+          {{ stats().adminCount }}
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Chart -->
+    <div class="bg-white p-6 rounded shadow mt-6" style="height:400px;">
+      <canvas #analyticsCanvas></canvas>
+    </div>
+
+  </div>
+
+</div>
